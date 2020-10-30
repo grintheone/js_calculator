@@ -1,4 +1,6 @@
 body {
+    font-family: 'Share Tech Mono', monospace;
+    font-weight: bold;
     width: 100vw;
     height: 100vh;
     padding: 0;
@@ -27,6 +29,23 @@ body {
     left: 50%;
     top: 2%;
     transform: translate(-50%);
+    overflow: hidden;
+}
+#field {
+    position: relative;
+    bottom: 25%;
+    right: 3px;
+    text-align: right;
+    color: #ffae00;
+    font-size: 3rem;
+}
+#field-sign {
+    color: #ffae00;
+    font-size: 1rem;
+    position: absolute;
+    right: 5px;
+    bottom: 60%;
+    transform: translate(-50%);
 }
 #buttons {
     padding: 5px;
@@ -44,6 +63,8 @@ body {
     justify-items: center;
     }
 #buttons button {
+    font-family: 'Share Tech Mono', monospace;
+    font-weight: bold;
     font-size: 1.5rem;
     outline: none;
     width: 75px;
@@ -55,6 +76,7 @@ body {
              -5px -5px 10px #3b3b3b;
 }
 #buttons button:active {
+    font-size: 1.4rem;
     box-shadow:  inset 5px 5px 10px #2b2b2b,
             inset -5px -5px 10px #3b3b3b;
 }
