@@ -8,13 +8,25 @@ let sign = '';
 let startOver = false;
 
 
-
+// Calling a function to fill the screen when numbers are being pressed.
 for (let i = 0; i < numpad.length; i++) {
     numpad[i].addEventListener('click', () => {
         populate(numpad[i]);
     });
 }
 
+// Keyboard support
+document.addEventListener('keydown', function(event) {
+    for (let i = 0; i < numpad.length; i++) {
+        if (numpad[i].textContent == event.key) {
+            populate(numpad[i]);
+        } else if (event.key == 'Backspace') {
+            screen.textContent = 0;
+        }
+    }
+})
+
+// Calling a function to perform calculations when controls keys are being pressed.
 for (let i = 0; i < controls.length; i++) {
     controls[i].addEventListener('click', () => {
         if (controls[i].textContent == 'AC') {
@@ -78,6 +90,7 @@ function changeSign() {
     screenValue *= -1;
 }
 
+// Clears all existing data.
 function clearScreen() {
     sign = '';
     screenValue = 0;
@@ -86,6 +99,7 @@ function clearScreen() {
     startOver = false;
 }
 
+// Main function to perform calculations.
 function operate(operator, a, b) {
     if (operator == '+') {
         add(a, b);
@@ -101,13 +115,15 @@ function operate(operator, a, b) {
     startOver = true;
 }
 
+// Function to fill up the screen.
 function populate(btn) {
     // If true clears the screen and allows a new value to be entered.
     if (startOver) {
         screen.textContent = 0;
         startOver = false;
     }
-  
+    
+    // Handles the first input when the initial value is zero.
     if (screen.textContent == 0) {
         if (btn.textContent == '.') {
             checkForCompliance(btn);
@@ -134,6 +150,7 @@ function checkForCompliance(btn) {
     }
 }
 
+// Secondary function to help with sign management .
 function evaluate(operator) {
     fieldScreen.textContent = operator;
     if (sign == operator) {
@@ -159,3 +176,4 @@ function convert(result) {
         return result;
     }
 }
+
