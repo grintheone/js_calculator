@@ -43,19 +43,29 @@ for (let i = 0; i < controls.length; i++) {
 function add(a, b) {
     a = +(a)
     b = +(b)
-    screen.textContent = a + b;
+    let result = (a + b).toString()
+    screen.textContent = convert(result);
 }
 
 function subtract(a, b) {
-    screen.textContent = a - b;
+    let result = (a - b).toString()
+    screen.textContent = convert(result);
 }
 
 function multiply(a, b) {
-    screen.textContent = a * b;
+    let result = (a * b).toString();
+    screen.textContent = convert(result);
 }
 
 function divide(a, b) {
-    screen.textContent =  a / b;
+    if (b == 0) {
+        clearScreen();
+        fieldScreen.textContent = 'Can\'t divide by zero';
+    } else {
+        let result = (a / b).toString()
+        screen.textContent =  convert(result);
+    }
+    
 }
 
 function percent() {
@@ -92,6 +102,7 @@ function operate(operator, a, b) {
 }
 
 function populate(btn) {
+    // If true clears the screen and allows a new value to be entered.
     if (startOver) {
         screen.textContent = 0;
         startOver = false;
@@ -99,27 +110,29 @@ function populate(btn) {
   
     if (screen.textContent == 0) {
         if (btn.textContent == '.') {
-            if (screen.textContent.includes('.')) {
-                screen.textContent = screen.textContent;
-            } else {
-                screen.textContent += btn.textContent;
-            }
+            checkForCompliance(btn);
         } else if (screen.textContent.length > 1) {
             screen.textContent += btn.textContent;
         } else {
             screen.textContent = btn.textContent;
         }
-    } else if (screen.textContent.length >= 13) {
-        screen.textContent = screen.textContent;
     } else {
-        if (btn.textContent == '.' && screen.textContent.includes('.')) {
-            screen.textContent = screen.textContent;
-        } else {
-            screen.textContent += btn.textContent;
-        }      
+        checkForCompliance(btn);    
     }
 }
 
+function checkForCompliance(btn) {
+    // Limit the amount of characters allowed for displaying.
+    if (screen.textContent.length >= 13) {
+        return;
+    }
+    // Check if there is already a period in the displayed value.
+    if (screen.textContent.includes('.') && btn.textContent == '.') {
+        return;
+    } else {
+        screen.textContent += btn.textContent;
+    }
+}
 
 function evaluate(operator) {
     fieldScreen.textContent = operator;
@@ -137,3 +150,12 @@ function evaluate(operator) {
     }
 }
 
+// Prevents big numbers from overflowing the screen.
+function convert(result) {
+    if (result.length > 9) {
+        result = parseFloat(result);
+        return result.toExponential(1);
+    } else {
+        return result;
+    }
+}
