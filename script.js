@@ -144,7 +144,7 @@ function populate(btn) {
 
 function checkForCompliance(btn) {
     // Limit the amount of characters allowed for displaying.
-    if (screen.textContent.length >= 13) {
+    if (screen.textContent.length >= 11) {
         return;
     }
     // Check if there is already a period in the displayed value.

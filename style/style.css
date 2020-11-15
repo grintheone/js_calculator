@@ -28,13 +28,14 @@ body {
         margin-top: 20px;
         width: 65px !important;
         height: 65px !important;
+        text-align: center !important;
     }
     #buttons .numpad-0 {
         width: 130px !important;
     }
     #field {
         position: absolute;
-        top: -5px;
+        top: -15px;
     }
 }
 #screen {
