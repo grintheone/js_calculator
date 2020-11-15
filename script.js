@@ -2,7 +2,7 @@ const screen = document.getElementById('field');
 screen.textContent = 0;
 const numpad = document.querySelectorAll('.white');
 const fieldScreen = document.getElementById('field-sign');
-const controls = document.querySelectorAll('.yellow');
+const controls = document.querySelectorAll('.orange');
 let screenValue = '';
 let sign = '';
 let startOver = false;
@@ -22,6 +22,11 @@ document.addEventListener('keydown', function(event) {
             populate(numpad[i]);
         } else if (event.key == 'Backspace') {
             screen.textContent = 0;
+        } else if (event.key == 'Enter') {
+            fieldScreen.textContent = '='
+            operate(sign, screenValue, screen.textContent);
+            screenValue = screen.textContent;
+            sign = '';
         }
     }
 })

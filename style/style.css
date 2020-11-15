@@ -19,6 +19,18 @@ body {
     left: 50%;
     transform: translate(-50%, -50%);
 }
+@media screen and (max-width: 550px) {
+    #main {
+        width: 95vw;
+        height: 97vh;
+    }
+    #buttons button {
+        margin-top: 40px;
+        
+        width: 100px;
+        height: 100px;
+    }
+}
 #screen {
     width: 96%;
     padding: 5px;
@@ -83,7 +95,7 @@ body {
 .white {
     color: #e6e6e6;
 }
-.yellow {
+.orange {
     color: #ffae00;
 }
 .side-column-2 {
