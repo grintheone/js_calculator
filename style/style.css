@@ -26,8 +26,8 @@ body {
     }
     #buttons button {
         margin-top: 20px;
-        width: 65px !important;
-        height: 65px !important;
+        width: 70px !important;
+        height: 70px !important;
         font-size: 1.3rem !important;
     }
     #buttons .numpad-0 {
